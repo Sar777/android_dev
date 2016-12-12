@@ -8,8 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 
 import com.instinctools.sprint_1.R;
-import com.instinctools.sprint_1.fragments.FragmentBodyText;
-import com.instinctools.sprint_1.fragments.FragmentCompany;
+import com.instinctools.sprint_1.enums.Company;
+import com.instinctools.sprint_1.fragments.BodyTextFragment;
+import com.instinctools.sprint_1.fragments.CompanyFragment;
 
 public class SecondActivity extends AppCompatActivity {
     @Override
@@ -19,33 +20,36 @@ public class SecondActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String title = getIntent().getStringExtra(MainActivity.EXTRA_TITLE_TAG);
-        boolean order = getIntent().getBooleanExtra(MainActivity.EXTRA_ORDER_TAG, false);
-        int companyDrawableResId = getIntent().getIntExtra(MainActivity.EXTRA_COMPANY_IMG_TAG, 0);
-        String companyName = getIntent().getStringExtra(MainActivity.EXTRA_COMPANY_NAME_TAG);
-        String bodyText = getIntent().getStringExtra(MainActivity.EXTRA_BODY_TAG);
+        Intent intent = getIntent();
+        if (intent != null) {
+            String title = intent.getStringExtra(MainActivity.EXTRA_TITLE_TAG);
+            boolean order = intent.getBooleanExtra(MainActivity.EXTRA_ORDER_TAG, false);
+            Company company = (Company) intent.getSerializableExtra(MainActivity.EXTRA_COMPANY_TAG);
+            String bodyText = intent.getStringExtra(MainActivity.EXTRA_BODY_TAG);
 
-        getSupportActionBar().setTitle(title);
+            getSupportActionBar().setTitle(title);
 
-        // Fragments
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if (order) {
-            fragmentTransaction.add(R.id.content_second, FragmentCompany.newInstance(companyDrawableResId, companyName));
-            fragmentTransaction.add(R.id.content_second, FragmentBodyText.newInstance(bodyText));
-        }  else {
-            fragmentTransaction.add(R.id.content_second, FragmentBodyText.newInstance(bodyText));
-            fragmentTransaction.add(R.id.content_second, FragmentCompany.newInstance(companyDrawableResId, companyName));
+            String companyName = getResources().getString(company.getResId());
+
+            // Fragments
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            if (order) {
+                fragmentTransaction.replace(R.id.frame_layout1, CompanyFragment.newInstance(company.getDrawableId(), companyName));
+                fragmentTransaction.replace(R.id.frame_layout2, BodyTextFragment.newInstance(bodyText));
+            } else {
+                fragmentTransaction.replace(R.id.frame_layout1, BodyTextFragment.newInstance(bodyText));
+                fragmentTransaction.replace(R.id.frame_layout2, CompanyFragment.newInstance(company.getDrawableId(), companyName));
+            }
+
+            fragmentTransaction.commit();
         }
-
-        fragmentTransaction.commit();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent mainIntent = new Intent(this, MainActivity.class);
-            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(mainIntent);
+            setResult(RESULT_CANCELED);
+            finish();
         }
 
         return true;
@@ -53,6 +57,7 @@ public class SecondActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
+        setResult(RESULT_OK);
         finish();
         return true;
     }

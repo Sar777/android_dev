@@ -13,7 +13,7 @@ import com.instinctools.sprint_1.R;
  * Created by orion on 9.12.16.
  */
 
-public class FragmentBodyText extends Fragment {
+public class BodyTextFragment extends Fragment {
     private static final String BUNDLE_BODY_TEXT_TAG = "BODY_TEXT";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public class FragmentBodyText extends Fragment {
         return view;
     }
 
-    public static FragmentBodyText newInstance(String text) {
-        FragmentBodyText fragment = new FragmentBodyText();
+    public static BodyTextFragment newInstance(String text) {
+        BodyTextFragment fragment = new BodyTextFragment();
         Bundle bundle = new Bundle();
         bundle.putString(BUNDLE_BODY_TEXT_TAG, text);
         fragment.setArguments(bundle);

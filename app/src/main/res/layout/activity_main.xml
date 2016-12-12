@@ -31,8 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/activity_margin_top_view"
-        android:entries="@array/pictures_array">
+        android:layout_marginTop="@dimen/activity_margin_top_view">
     </Spinner>
 
     <CheckBox
@@ -44,7 +43,7 @@
         android:text="@string/string_order_fragments"/>
 
     <Button
-        android:id="@+id/bt_send"
+        android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

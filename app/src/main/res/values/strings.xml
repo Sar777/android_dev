@@ -6,11 +6,10 @@
     <string name="string_button_send">Отправить</string>
     <string name="string_empty_views">Заполните все поля</string>
 
-    <string-array name="pictures_array">
-        <item>Apply</item>
-        <item>Samsung</item>
-        <item>LG</item>
-        <item>Xiaomi</item>
-    </string-array>
+    <string name="title_apply">Apply</string>
+    <string name="title_samsung">Samsung</string>
+    <string name="title_lg">LG</string>
+    <string name="title_xiaomi">Xiaomi</string>
+
     <string name="title_activity_second">SecondActivity</string>
 </resources>

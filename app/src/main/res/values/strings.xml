@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">sprint_1</string>
+    <string name="string_title">Введите название...</string>
+    <string name="string_body_text">Тут есть некоторый текст Тут есть некоторый текст Тут есть некоторый текст Тут есть некоторый текст</string>
+    <string name="string_order_fragments">Порядок фрагментов</string>
+    <string name="string_button_send">Отправить</string>
+    <string name="string_empty_views">Заполните все поля</string>
+
+    <string name="title_apply">Apply</string>
+    <string name="title_samsung">Samsung</string>
+    <string name="title_lg">LG</string>
+    <string name="title_xiaomi">Xiaomi</string>
+
+    <string name="title_activity_second">SecondActivity</string>
+</resources>

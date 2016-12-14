@@ -1,0 +1,7 @@
+<resources>
+    <string name="string_title">Enter the title...</string>
+    <string name="string_body_text">Here some text... Here some text... Here some text... Here some text... Here some text... Here some text...</string>
+    <string name="string_order_fragments">Order fragments</string>
+    <string name="string_button_send">Send</string>
+    <string name="string_empty_views">Fill in all the fields</string>
+</resources>
